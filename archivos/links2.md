@@ -1,0 +1,3 @@
+- [Yahoo](https://www.yahoo.com)
+- [Twitter](https://www.twitter.com)
+- [IdSoftware](https://www.idsoftware.com)

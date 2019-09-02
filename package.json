@@ -1,4 +1,33 @@
 {
-  "name": "md-links",
-  "version": "0.1.0"
+ "name": "md-links",
+ "version": "0.1.0",
+ "dependencies": {
+  "chai": "^4.1.2",
+  "eslint": "^6.2.2",
+  "fetch": "^1.1.0",
+  "fs": "0.0.1-security",
+  "htmlhint": "^0.10.1",
+  "htmlparser2": "^4.0.0",
+  "http": "0.0.0",
+  "https": "^1.0.0",
+  "jsdom": "^15.1.1",
+  "markdown": "^0.5.0",
+  "markdown-js": "0.0.4",
+  "markdown-link-extractor": "^1.2.1",
+  "mocha": "^5.1.1",
+  "nyc": "^14.1.1",
+  "opener": "^1.4.3",
+  "request": "^2.88.0"
+ },
+ "bin": {
+  "md-links": "./md-links.js"
+ },
+ "scripts": {
+  "htmlhint": "htmlhint src/*.html test/*.html",
+  "eslint": "eslint --ext .js test/",
+  "pretest": "npm run eslint && npm run htmlhint",
+  "test-browser": "opener ./test/index.html",
+  "test-node": "nyc mocha ./test/headless.js",
+  "test": "npm run test-node  && npm run test-browser"
+ }
 }
