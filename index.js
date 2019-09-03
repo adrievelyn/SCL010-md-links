@@ -22,7 +22,7 @@ const mdLinks = (path, options) => {
     PATH = pathModule.relative(__dirname, pathModule.dirname(path));
   }
   if(options == null){
-    console.log(readData(PATH));
+    console.log(readData(PATH))
   }
   if(options != null && options.validate && !options.stats){
     readData(PATH,true);
@@ -53,31 +53,35 @@ const checkDirectory = (path) => {
 }
 
 
-const readData = (path,validate,stats) => {
+function readData  (path,validate,stats){
   let total = 0;
   let ready = 0;
   let notReady = 0;
-  let obj = [];
+  obj = [];
+
   fs.readdirSync(path).forEach(file => {
-    fs.readFile(path+"/"+file, {encoding: 'utf-8'}, function(err,data){
+
+    if (pathModule.extname(file) === ".md") {
+      fs.readFile(path+"/"+file, {encoding: 'utf-8'}, function(err,data){
       let result = markdown.makeHtml(data);
       const dom = new JSDOM(result)
 
       dom.window.document.querySelectorAll("a").forEach(function(node){
         if(!validate && !stats) {
-          request(node.href, function (error, response, body) {
+           request(node.href, function (error, response, body) {
             if (response && response.statusCode == 200) {
               //console.log(path+"/"+file +" "+node.href +" "+node.text)
               let linksOk = { 
                 href: node.href,
                 text: node.text,
-                file: path+"/"+file
+                file: path+file
               }
               obj.push(linksOk);
-              console.log(obj)
             }
+             console.log(obj)
           });
         }
+       
         if(validate && !stats) {
           request(node.href, function (error, response, body) {
             if (response) {console.log(path+"/"+file +" "+node.href +" "+node.text)
@@ -112,9 +116,9 @@ const readData = (path,validate,stats) => {
       })
 
     });
-
+    }
   });
-
+  return obj;
 }
 
 module.exports = mdLinks;
