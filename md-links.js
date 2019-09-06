@@ -15,7 +15,7 @@ if(arg1 == "--validate" && arg2 == null){
   let obj = {validate: true,stats: false};
   index(pathCLI,obj);
 }
-//verificando que valudate y stats son verdaderos
+//verificando que validate y stats son verdaderos
 if((arg1 == "--validate" && arg2 == "--stats") || (arg2 == "--validate" && arg1 == "--stats") ){
   let obj = {validate: true,stats: true};
   index(pathCLI,obj);

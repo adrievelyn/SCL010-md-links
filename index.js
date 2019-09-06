@@ -51,7 +51,7 @@ const mdLinks = (path, options) => {
               console.log({ // Imprimes el resultado
                 href: node.href, // URL
                 text: node.text, // valor del tag A
-                file: path+file // la ruta del archivo
+                file: file // la ruta del archivo
               });  
             }
           }
