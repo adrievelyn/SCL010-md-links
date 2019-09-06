@@ -42,7 +42,6 @@ Si quieres analizar sólo un archivo y se llama README.md debes ingresar lo sigu
 node index.js README.md
 
 ## Diagrama de Flujo
-![Diagrama de Flujo](SCLO10-md-links/img/DiagramaDeFlujo.jpg)
 https://assets.adobe.com/cloud-documents/urn:aaid:sc:us:0db8c94b-801d-4f26-8c36-5a18c1aeec9c
 
 ## Checklist
